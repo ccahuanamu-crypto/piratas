@@ -1,5 +1,5 @@
 test: main.o sorting.o 
-	gcc main.o sorting.o test
+	gcc main.o sorting.o -o test
 main.o: main.c sorting.h
 	gcc -c main.c
 sorting.o: sorting.c sorting.h
