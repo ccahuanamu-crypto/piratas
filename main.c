@@ -1,6 +1,7 @@
+/*
 #include "sorting.h"
 #include <stdio.h>
-/*
+
 int CmpPrt(const void* x, void* y){
   const Pirate* p1 = (const Pirate*) x;
   const Pirate* p2 = (const Pirate*) y;
@@ -21,6 +22,9 @@ int CmpPrt(const void* x, void* y){
 
 }
 */ 
+#include "sorting.h"
+#include <stdio.h>
+
 int compareInt(const void* x, const void* y){
   int a = *(const int*)x;
   int b = *(const int*)y;
