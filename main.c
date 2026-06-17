@@ -1,8 +1,11 @@
-/*
+#include "piratas.h"
 #include "sorting.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX_PIRATES 1000
 
-int CmpPrt(const void* x, void* y){
+int CmpPrt(const void* x,const void* y){
   const Pirate* p1 = (const Pirate*) x;
   const Pirate* p2 = (const Pirate*) y;
 
@@ -19,30 +22,37 @@ int CmpPrt(const void* x, void* y){
     return cmpName;
 
   return strcmp(p1 -> crew, p2 -> crew);
-
 }
-*/ 
-#include "sorting.h"
-#include <stdio.h>
 
-int compareInt(const void* x, const void* y){
-  int a = *(const int*)x;
-  int b = *(const int*)y;
-  
-  if(a < b) return -1;
-  if(a > b) return 1;
-  return 0;
+void printPirate(Pirate pirates[], int n){
+  for (int i = 0; i < n; i++){
+    printf("%s %lld %d %s\n",
+          pirates[i].name,
+          pirates[i].bounty,
+          pirates[i].age,
+          pirates[i].crew);
+  }
 }
 
 int main(){
-  int arr[] = {4, 2, 3, 1};
+  int lenPirates;
+  scanf("%d", &lenPirates);
 
-  insertionSort(arr, 4, sizeof(int), compareInt);
-  
-  for(int i = 0; i < 4; i++){
-    printf("%d ", arr[i]);
+  Pirate pirates[MAX_PIRATES];
+
+  for(int i = 0; i < lenPirates; i++ ){
+    scanf("%s %lld %d %s",
+          pirates[i].name,
+          &pirates[i].bounty,
+          &pirates[i].age,
+          pirates[i].crew);
   }
-  printf("\n");
 
+  insertionSort(pirates, lenPirates, sizeof(Pirate), CmpPrt);
+ 
+  printPirate(pirates, lenPirates);
+  
+  
   return 0;
+
 }
